@@ -1,22 +1,22 @@
 <?php
 
-include('../connection/conn.php');
+include('../../connection/conn.php');
 
-if (empty($_REQUEST['NAME']) || empty($_REQUEST['EMAIL']) || empty($_REQUEST
-['PASSWORD']) || empty($_REQUEST['LEVEL'])){
+if (empty($_POST['NAME']) || empty($_POST['EMAIL']) || empty($_POST
+['PASSWORD']) || empty($_POST['LEVEL'])){
     $dados = array(
 "type" => "error",
 "message" => "Existe(m) campo(s) obrigatório(s) não preenchido(s)."
     );
-} else {
+ } else {
     try{
 $sql = "INSERT INTO USER (NAME, EMAIL, PASSWORD, LEVEL) VALUES (?, ?, ?, ?)";
 $stmt = $conn ->prepare($sql);// STATEMENT 
 $stmt -> execute([
-$_REQUEST['NAME'],
-$_REQUEST['EMAIL'],
-$_REQUEST['PASSWORD'],
-$_REQUEST['LEVEL']
+$_POST['NAME'],
+$_POST['EMAIL'],
+$_POST['PASSWORD'],
+$_POST['LEVEL']
 ]);
 $dados = array(
     "type" => "success",
