@@ -1,4 +1,3 @@
-// colocar dentro da pasta user em model
 <?php
 
 include('../../connection/conn.php');
